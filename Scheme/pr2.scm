@@ -1,7 +1,6 @@
-(define (fibsum x))
-(define (fib n)
-  (define (fib-iter a b count)
-    (if (= count 0)
-  	  b
-  	  (fib-iter (+ a b) a (- count 1))))
-  (fib-iter 1 0 n))
+(define (sumevenfib n)
+  (define (fib sum c b a)
+	(cond ((>= c n) sum)
+		  ((even? c) (fib (+ sum c) (+ c b) (+ b a) b))
+		  (else (fib sum (+ c b) (+ b a) b))))
+  (fib 2 3 2 1))
